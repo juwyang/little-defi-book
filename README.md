@@ -1,3 +1,3 @@
 # Introduction
 
-The little book of digital finance.
+The little book of decentralized finance.
