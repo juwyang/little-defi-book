@@ -1,0 +1,9 @@
+{"scripts": {
+    "build": "honkit build",
+    "serve": "honkit serve",
+    "deploy": "npm run build && gh-pages -d _book"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
+}
