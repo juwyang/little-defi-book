@@ -1,4 +1,4 @@
-> ### Decentralized Finance (DeFi), Blockchain Technology (Blockchain), Distributed Ledger, Bitcoin (BTC), and Ethereum (ETH)
+### Decentralized Finance (DeFi), Blockchain Technology (Blockchain), Distributed Ledger, Bitcoin (BTC), and Ethereum (ETH)
 
 - DeFi: A series of decentralized financial services based on smart contracts on Ethereum. Each service or product corresponds to an implementation of a smart contract. Application scenarios include: Loanable Funds Markets, Decentralized Exchanges (DEX), Stablecoins, Derivatives, etc.
 - Blockchain: Essentially a database technology, a distributed ledger. Distributed means that multiple nodes form a network, and all nodes keep an identical copy of the ledger. Each block contains a series of transaction data, a timestamp, and a cryptographic hash of the previous block (a key to trace back to the previous block). When a new block is generated, it is added to the end of the chain, and the copy on each node is updated accordingly, forming a transaction record that is difficult to tamper with. The blockchains of Bitcoin and Ethereum are public chains (everyone can see the data). There are also other blockchain platforms as well as some private chains and consortium chains.
@@ -6,50 +6,50 @@
 - Ethereum: A blockchain platform, analogous to a community, characterized by the introduction of the concept of Smart Contracts, allowing developers to build decentralized applications (DApps) on it to achieve more complex functions. Proposed by Vitalik Buterin in 2013. On this platform, things like ERC-20 tokens, Non-Fungible Tokens (NFTs), Decentralized Autonomous Organizations (DAOs), etc., can be implemented.
 - Distributed Ledger: This is the broadest category. Besides blockchain implementations, there are other implementation methods, such as DAGs (Directed Acyclic Graphs, e.g., IOTA's Tangle or Hedera Hashgraph).
 
-```text
-Summary:
+
+>Summary:
 (Underlying Technology) Blockchain technology is a foundational technology.
 (First Layer: Blockchain Platforms) Bitcoin and Ethereum are specific implementations and platforms based on blockchain technology, each having its own protocol defining its operation.
 (Second Layer: Application Layer) Decentralized Finance (DeFi) is a series of financial applications built on blockchain platforms like Ethereum, and these applications also follow specific protocols.
 Two meanings of decentralization:
-1. Infrastructure Architecture: The network is decentralized; each node is connected to other nodes, rather than a centralized node.
-2. Application of Smart Contracts: There is no need for a centralized intermediary to execute contract terms; all transactions are automatically executed on the blockchain.
-```
+>1. Infrastructure Architecture: The network is decentralized; each node is connected to other nodes, rather than a centralized node.
+>2. Application of Smart Contracts: There is no need for a centralized intermediary to execute contract terms; all transactions are automatically executed on the blockchain.
 
-> ### Why are Smart Contracts "Smart", and What is a Protocol?
+
+### Why are Smart Contracts "Smart", and What is a Protocol?
 
  - A smart contract refers to self-executing code deployed on a blockchain that automatically executes the terms of the contract when preset conditions are met. "Smart" mainly refers to "automated execution" without human intervention. It's analogous to a vending machine: one party selects a product, inserts money, and the transaction is completed automatically.
  - Protocols permeate all layers of blockchain technology. Essentially, they are community-recognized norms, much like language is a human protocol where people follow the same grammar and semantics to communicate. At the base layer of blockchain technology, there are network protocols and consensus protocols. (i) Each platform has its own protocols, such as the Bitcoin protocol and the Ethereum protocol. These protocols define the consensus algorithm (e.g., Bitcoin chose PoW, Ethereum initially used PoW and later switched to PoS), block reward rules (how many new native tokens are rewarded to miners/validators when a new block is generated, and whether this reward changes over time, like Bitcoin's halving mechanism), new token generation mechanisms (native tokens like BTC, ETH are mainly generated through block rewards; the protocol specifies their initial supply, if any, and subsequent issuance rate), transaction fee models (how user-paid transaction fees are distributed), difficulty adjustment algorithms ((Nonce difficulty in PoW): the protocol includes an algorithm that automatically adjusts mining difficulty based on the network's total hash rate (or block generation rate) to maintain a relatively stable block time), and block structure and size limits, etc. These initial settings are all encoded in the first version of the client software of the protocol. Subsequent major changes usually require a hard fork and widespread acceptance and upgrades by network participants. (ii) At the application layer, there are also a series of DeFi protocols, such as lending protocols (which define interest rates, liquidation thresholds, etc.), the ERC-20 protocol (which defines functions that token contracts must implement, such as `transfer()` and `balanceOf()`, so that different tokens can interact with wallets, exchanges, and other smart contracts in a unified way), Uniswap's liquidity pool automated market maker protocol, etc.
 
-```text
-Summary:
-Protocols are sets of rules; smart contracts are the means of implementing those rules.
-```
 
-> ### The Lifecycle of a Transaction
+>Summary:
+Protocols are sets of rules; smart contracts are the means of implementing those rules.
+
+
+### The Lifecycle of a Transaction
 
 - Accounts are divided into two types: wallets owned by users are called EOA (Externally Owned Account), which include a pair of keys. The public key can be derived from the private key through cryptographic algorithms, and the account's public address (e.g., Ethereum addresses start with `0x`) is derived from the public key. The address is public and used to receive funds and identify the account. There is another type of account called a Contract Account, which are instances of smart contracts, such as Uniswap's trading pair contract or an ERC-20 token contract. These are controlled by smart contract code and also have an address. Only EOAs can initiate transactions; contract accounts cannot actively initiate transactions but can only respond to calls from EOAs. Transactions that EOAs can initiate include: transferring funds (sending a certain amount of native tokens to another EOA address), calling functions of a contract account (e.g., swapping tokens on a DEX, minting NFTs, participating in lending, etc.).
 - Transaction lifecycle: (i) A user signs a transaction using their private key and sends the transaction request to a node on the connected blockchain network via wallet software like MetaMask or their own running node software (e.g., Geth). The node performs initial checks on the transaction format, signature, account balance, etc. (ii) If it passes, the transaction is placed in this node's mempool and propagated to other nodes in the network via the Gossip protocol. (iii) Operators of various nodes (miners or validators) compete for the right to add the next block. They select a batch of transactions (usually those willing to pay higher transaction fees) from the mempool to package into a new block. This node will execute the code required to complete the transaction (such as calling a smart contract) in its local Ethereum Virtual Machine (EVM) or similar environment. During execution, the state of the contract may change (e.g., variable values updated, events emitted, transfers to other addresses). The miner/validator executing the transaction will include the execution results (new state root hash, transaction receipts, etc.) in the proposed block and broadcast this block to other nodes in the network. (iv) Other full nodes, upon receiving the new block, will independently re-execute all transactions in the block (including smart contract calls) to verify their validity and results.
 - During the execution of a transaction, there are some computations, such as calling a smart contract function or transferring funds. These computations are executed in the Ethereum Virtual Machine (EVM). Each underlying opcode in the EVM, such as addition (ADD), storing data to the blockchain (SSTORE), reading data from storage (SLOAD), etc., has a predefined Gas cost. These costs are paid by the transaction initiator to the miners/validators.
 - If a transaction fails (state reverts, as if it never happened), the Gas already consumed (up to the point where the limit was exceeded) will still be paid to the miners/validators.
 
-```text
-Summary:
+
+>Summary:
 Wallet initiates transaction request -> Node receives request and broadcasts -> Miner/Validator selects and packages -> Other nodes verify the block, transaction is added to the chain.
 The cost is paid by the transaction initiator (sender) to the miner/validator.
-```
 
-> ### Nodes and Network, Miners and Validators
+
+### Nodes and Network, Miners and Validators
 
 - Nodes are individual computers or servers running specific blockchain client software (e.g., Bitcoin Core, Ethereum's Geth or Nethermind). They communicate directly with other nodes via the internet, sharing and synchronizing blockchain data, thus forming the blockchain network. Their functions include: storing a copy of the blockchain, validating transactions and blocks, and propagating information to other nodes.
 - Nodes where miners or validators reside are special nodes that produce blocks. Miners and validators correspond to PoW (Proof-of-Work) and PoS (Proof-of-Stake) consensus mechanisms, respectively. Bitcoin uses PoW consensus; Ethereum uses PoS consensus. Mining refers to miners attempting to find a value called a "nonce." When this nonce is hashed with other data in the block, the resulting hash must be less than a specific target value (this target value is dynamically adjusted based on network hash rate to ensure a block is generated approximately every fixed interval, e.g., about 10 minutes for Bitcoin, about 15 seconds for early Ethereum). The first miner to successfully mine a block receives a certain amount of newly issued native tokens (block reward) and all transaction fees within that block. Validators are nodes or individuals/organizations that gain the qualification to participate in creating and validating new blocks by staking a certain amount of the blockchain's native tokens. The system selects a validator to propose the next new block according to some algorithm (usually related to factors like the amount of tokens staked by the validator, staking duration, etc.). Other validators then vote on the proposed block. In a PoW system, any individual or organization with sufficient computing power (usually specialized ASIC miners or GPUs) and running the corresponding mining software can become a miner. In a PoS system, any individual or organization with a sufficient amount of native tokens to stake and running the corresponding validator client software can become a validator. In Ethereum PoS, as of early 2024, the number of active validators exceeded 900,000.
 
-> ### Tokens
+### Tokens
 
 - Tokens are divided into two types: Native Tokens and tokens created via smart contracts. Native tokens like BTC and ETH are part of the blockchain protocol. For example, BTC is stipulated to be generated through mining, has a fixed cap (21 million), and its production is periodically halved. ETH: Initially mined via PoW, now generated through PoS staking rewards; its issuance policy can be adjusted through community consensus. They are stored directly in accounts (addresses) on the corresponding blockchain. Users control these native tokens on their addresses by controlling their private keys.
 - Another category is application-layer tokens. These are tokens created on a blockchain platform (like Ethereum) via smart contracts. Their total supply, inflation mechanisms, burning mechanisms, etc., are set by the creator of the token contract. ERC-20 is the standard protocol for Fungible Tokens, and ERC-721 is the standard protocol for Non-Fungible Tokens (NFTs). A standard protocol is like a socket interface; it specifies the functions that a token contract must implement. This facilitates interaction between different tokens, wallets, smart contracts, and exchanges. For example, when a user adds a new ERC-20 Token, the wallet knows it can use `balanceOf()` to query the balance of this Token and `transfer()` to initiate a transfer. Fungible Tokens mean that every unit of such a token is identical and interchangeable, including stablecoins (like USDC, DAI), and governance tokens (like Uniswap's UNI, holders can use them to vote on the future development of the protocol; each similar governance token has the same voting power). Non-Fungible Tokens are unique, indivisible, and irreplaceable. Each NFT has its unique attributes and identifiers. Examples include digital art, in-game items, virtual real estate, etc. The ownership and transaction history of NFTs are stored on the blockchain. Example: A smart contract for a stablecoin like USDC. When its issuer (e.g., Circle) receives an equivalent amount of USD reserves, they can call the minting function of the USDC contract through a privileged address they control, generating the corresponding amount of USDC tokens on-chain and sending them to a specified address. An NFT project party, after the user pays the minting fee, its smart contract will call the minting function to create a new, unique NFT for the user (assigning a new token ID and recording the user as the owner).
 
-> ### Digital Currencies Can Also Be Traded on CEXs
+### Digital Currencies Can Also Be Traded on CEXs
 
 - For most ordinary users, centralized exchanges (CEXs) are the primary venues for buying, selling, and trading digital currencies. Some well-known examples of centralized exchanges include:
   - Binance: Currently one of the world's largest cryptocurrency exchanges by trading volume.
