@@ -1,3 +1,3 @@
-# Introduction
+# Hi!
 
-The little book of decentralized finance.
+This is a little book of decentralized finance.

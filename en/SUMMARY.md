@@ -1,7 +1,9 @@
-# Summary
-
-* [Introduction](README.md)
+## Welcome
+* [Hi!](README.md)
 ## Primitives
 * [Primitives](primitives.md)
 ## Applications
-* [Applications](applications.md)
+* [Scenarios](applications.md)
+* [Tokenization](tokenization.md)
+## Technical Details
+* [Technical Details](techniques.md)
