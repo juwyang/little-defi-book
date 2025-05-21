@@ -1,0 +1,377 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <title>代币化 · HonKit</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 6.0.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Techniques.html" />
+    
+    
+    <link rel="prev" href="applications.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="primitives.html">
+            
+                <a href="primitives.html">
+            
+                    
+                    Primitives
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="applications.html">
+            
+                <a href="applications.html">
+            
+                    
+                    DeFi Applications
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4" data-path="Tokenization.html">
+            
+                <a href="Tokenization.html">
+            
+                    
+                    代币化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="Techniques.html">
+            
+                <a href="Techniques.html">
+            
+                    
+                    Technical Details
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            本书使用 HonKit 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >代币化</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="tokenization-of-real-world-assetsrwas">Tokenization of real world assets(RWAs)</h3>
+<p>将现实世界中存在的资产（如房地产、艺术品、大宗商品、债券等）的价值或所有权权利转换为区块链上的数字代币的过程。这些代币代表了对标的资产的直接或间接权利，可以在区块链网络上进行交易、转移和管理。建立DeFi 和 传统金融 之间“入金通道”(on-ramps, 将法定货币转换为加密资产)和“出金通道”(off-ramps，将加密资产转换为法定货币)。面临的挑战包括监管不确定性、技术集成复杂性、合规性要求（如KYC/AML）以及用户体验等问题。</p>
+<h4 id="tokenization解决的问题">Tokenization解决的问题</h4>
+<ul>
+<li>流动性不足： 许多现实世界资产，如房地产和私募股权，传统上流动性较差，难以快速买卖。代币化可以将这些资产分割成更小的、可交易的份额，从而提高其市场流动性。</li>
+<li>可访问性有限： 高价值资产的投资门槛通常很高，将许多中小投资者排除在外。代币化通过部分所有权降低了投资门槛，使更广泛的投资者能够参与。</li>
+<li>交易效率低下和成本高昂：传统资产交易通常涉及多个中介机构、复杂的流程和高昂的交易成本。代币化利用区块链和智能合约可以简化交易流程，减少中介环节，从而提高效率并降低成本。</li>
+<li>透明度不足： 传统金融市场在某些情况下可能缺乏透明度。区块链的分布式账本特性可以提供更高级别的交易透明度和可审计性。 </li>
+<li>市场分割： 全球金融市场往往是分割的，跨境交易面临诸多障碍。代币化有潜力创建一个更统一的全球市场，促进跨境资本流动。 </li>
+</ul>
+<h4 id="tokenization的应用场景">Tokenization的应用场景</h4>
+<p>全球范围内正在进行各种现实世界资产代币化的实验和试点项目，涵盖了广泛的资产类别：</p>
+<ul>
+<li>房地产： 这是代币化最突出的应用领域之一。例如，一些项目已经对纽约和旧金山的公寓楼进行了代币化，允许投资者以较小的金额购买房产的一小部分。 迪拜也计划到2033年将其7%的房地产代币化。</li>
+<li>债券和国库券： 摩根大通的Onyx Digital Assets平台已经结算了数千亿美元的代币化美国国库券。 贝莱德也推出了其首个代币化基金BUIDL，投资于现金、美国国库券和回购协议。一些城市，如杭州，也启动了代币化小企业债券的试点项目。</li>
+<li>大宗商品： 黄金等贵金属已经被代币化，例如Tether Gold (XAU₮) 就由实物黄金支持。农业产品如谷物和牲畜也有代币化的探索项目。 </li>
+<li>艺术品和收藏品： 代币化使得艺术品和收藏品的部分所有权成为可能，降低了投资门槛。</li>
+<li>私募股权和基金： 花旗集团与Ava Labs合作，对私募股权基金进行代币化概念验证。Hamilton Lane也与Securitize合作，将其二级市场基金代币化，降低了合格投资者的最低投资额。</li>
+<li>碳信用额： 代币化也被应用于碳信用额等无形资产。</li>
+<li>知识产权： 通过将版权或专利转换为NFT，可以保护其真实性并防止未经授权的使用。</li>
+</ul>
+<h4 id="代币化的长期潜力inclusion-liquidity-efficiency">代币化的长期潜力(inclusion, liquidity, efficiency)</h4>
+<ul>
+<li>代币化的长期潜力在于它可以创建一个更高效、透明和可访问的金融生态系统。随着技术的成熟和监管框架的建立，代币化可能会改变我们对资产所有权、交易和投资的理解, 有望深刻改变金融市场的结构和运作方式。</li>
+<li>金融普惠性的提升： 通过降低投资门槛和增加资产的可分割性，代币化将使更多人能够参与到以前难以触及的投资机会中。</li>
+<li>市场效率的提高： 自动化、去中介化和近乎实时的结算将大幅提高交易效率，降低成本。</li>
+<li>全球流动性的增强： 代币化资产可以在全球范围内进行24/7的交易，打破地域限制，释放数万亿美元的非流动资产。</li>
+<li>新的金融产品和服务的出现： 基于代币化资产，可以开发出更多创新性的金融产品和服务，例如基于RWA的DeFi借贷、质押等。</li>
+<li>传统金融与去中心化金融的融合： 代币化是连接TradFi和DeFi的关键桥梁，未来有望模糊两者之间的界限，形成一个更统一、高效的金融生态系统。</li>
+<li>更透明和稳健的金融体系： 区块链的透明性和可追溯性有助于提高市场透明度，更好地管理和评估系统性风险。 </li>
+</ul>
+<h4 id="两个应用的例子">两个应用的例子:</h4>
+<h5 id="跨境支付：">跨境支付：</h5>
+<ul>
+<li>摩擦： 传统的跨境支付通常面临以下痛点：交易成本高昂（涉及多家中间银行和货币兑换）、处理时间长（依赖不同时区的银行系统和人工合规检查）、欺诈风险以及复杂的监管要求。</li>
+<li>代币化解决方案： 代币化（尤其是使用稳定币或央行数字货币CBDC）可以通过以下方式解决这些摩擦：<ul>
+<li>降低成本和提高速度： 通过消除中介机构和自动化流程，代币化可以显著降低交易费用并实现近乎实时的结算。 </li>
+<li>增强安全性： 将敏感数据转换为安全的数字代币，可以减少欺诈和数据泄露的风险。 </li>
+<li>提高透明度和可追溯性： 区块链上的交易记录是透明且不可篡改的，便于追踪和审计。</li>
+<li>简化合规流程： 智能合约可以嵌入合规规则（如AML/KYC），实现自动化合规检查。</li>
+<li>促进互操作性： 统一的分布式账本可以简化不同支付系统和货币之间的交互。 
+例子： 一些银行和金融科技公司正在试验使用代币化存款或稳定币进行跨境支付，以提高效率和降低成本。 流动性提供者在促进不同发行方或不同货币的代币化存款转账方面将发挥关键作用。 </li>
+</ul>
+</li>
+</ul>
+<h5 id="贷款服务：">贷款服务：</h5>
+<ul>
+<li>摩擦： 传统贷款服务通常涉及漫长的审批流程、繁琐的文书工作、较高的中介费用以及对抵押品流动性的限制。对于借款人而言，获得贷款可能耗时且成本高昂；对于贷款人而言，管理和处置抵押品也可能效率低下。</li>
+<li>代币化解决方案： 代币化可以通过以下方式改善贷款服务：<ul>
+<li>提高抵押品流动性： 将房地产、艺术品等传统非流动资产代币化后，可以作为贷款抵押品，而无需实际出售资产即可获得流动性。 </li>
+<li>简化流程和降低成本： 在DeFi平台上，贷款申请、审批、发放和还款等流程可以通过智能合约自动化执行，减少人工干预和官僚程序，从而降低利率和管理成本。 </li>
+<li>扩大融资渠道： 代币化使得借款人可以接触到更广泛的全球投资者，而不仅仅局限于传统银行。</li>
+<li>提高透明度和效率： 贷款条款、抵押品状态和还款记录都可以记录在区块链上，提高透明度和管理效率。 </li>
+<li>自动化股息支付和公司行动： 对于代币化债务工具，可以自动设置定期股息支付，并通过数字平台执行公司行动。</li>
+</ul>
+</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="applications.html" class="navigation navigation-prev " aria-label="Previous page: DeFi Applications">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Techniques.html" class="navigation navigation-next " aria-label="Next page: Technical Details">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"代币化","level":"1.4","depth":1,"next":{"title":"Technical Details","level":"1.5","depth":1,"path":"Techniques.md","ref":"Techniques.md","articles":[]},"previous":{"title":"DeFi Applications","level":"1.3","depth":1,"path":"applications.md","ref":"applications.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"Tokenization.md","mtime":"2025-05-21T12:51:57.969Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-05-21T13:19:39.055Z"},"basePath":".","book":{"language":"zh-hans"}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
