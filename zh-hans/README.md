@@ -1,3 +1,3 @@
-# Introduction
+# 介绍
 
-The little book of decentralized finance.
+一本关于区块链和去中心化金融的小书。
