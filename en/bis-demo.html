@@ -1,328 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive BIS Projects </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .table-container {
+            overflow-x: auto;
+            margin-bottom: 30px;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1000px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #e9ecef;
+            font-weight: bold;
+            color: #495057;
+        }
+        td strong {
+            color: #0056b3;
+        }
+        .project-cell {
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .project-cell.highlight {
+            background-color: #fff3cd;
+            font-weight: bold;
+        }
+        .theme-buttons-container {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .theme-buttons-container h2 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        .theme-button {
+            padding: 10px 18px;
+            margin: 5px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            transition: opacity 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .theme-button:hover {
+            opacity: 0.85;
+            transform: translateY(-2px);
+        }
 
-<!DOCTYPE HTML>
-<html lang="en" >
-    <head>
-        <meta charset="UTF-8">
-        <title>BISIH demo · HonKit</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="description" content="">
-        <meta name="generator" content="HonKit 6.0.3">
-        
-        
-        
-    
-    <link rel="stylesheet" href="../gitbook/style.css">
-
-    
-            
-                
-                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
-                
-            
-        
-
-    
-
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-
-        
-    
-    
-    <meta name="HandheldFriendly" content="true"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
-    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
-
-    
-    
-    <link rel="prev" href="techniques.html" />
-    
-
-    </head>
-    <body>
-        
-<div class="book honkit-cloak">
-    <div class="book-summary">
-        
-            
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
-</div>
-
-            
-                <nav role="navigation">
-                
-
-
-<ul class="summary">
-    
-    
-
-    
-
-    
-        
-        
-    
-        <li class="chapter " data-level="1.1" data-path="./">
-            
-                <a href="./">
-            
-                    
-                    Hi!
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2" data-path="primitives.html">
-            
-                <a href="primitives.html">
-            
-                    
-                    Primitives
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3" data-path="applications.html">
-            
-                <a href="applications.html">
-            
-                    
-                    DApp Scenarios
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4" data-path="tokenization.html">
-            
-                <a href="tokenization.html">
-            
-                    
-                    Tokenization
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5" data-path="techniques.html">
-            
-                <a href="techniques.html">
-            
-                    
-                    Technical Details
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter active" data-level="1.6" data-path="bis-demo.html">
-            
-                <a href="bis-demo.html">
-            
-                    
-                    BISIH demo
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-    
-
-    <li class="divider"></li>
-
-    <li>
-        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
-            Published with HonKit
-        </a>
-    </li>
-</ul>
+        /* Theme-specific colors */
+        .theme-button[data-theme="wCBDC"] { background-color: #1abc9c; } /* Turquoise */
+        .theme-button[data-theme="rCBDC"] { background-color: #16a085; } /* Darker Turquoise/Green Sea */
+        .theme-button[data-theme="TokenizedDeposits"] { background-color: #3498db; } /* Bright Blue */
+        .theme-button[data-theme="DigitalMoney"] { background-color: #5dade2; } /* Light Blue */
+        .theme-button[data-theme="Integration"] { background-color: #8e44ad; } /* Purple */
+        .theme-button[data-theme="DLT"] { background-color: #58d68d; } /* Light Green */
+        .theme-button[data-theme="CrossBorder"] { background-color: #f1948a; } /* Light Pink/Coral */
+        .theme-button[data-theme="DataAI"] { background-color: #f5b041; } /* Orange/Peach */
+        .theme-button[data-theme="RiskReg"] { background-color: #aeb6bf; } /* Light Gray/Silver */
+        .theme-button[data-theme="PaymentsInfra"] { background-color: #76d7c4; } /* Pale Turquoise/Teal */
 
 
-                </nav>
-            
-        
+        @media (max-width: 768px) {
+            body {
+                margin: 10px;
+            }
+            th, td {
+                padding: 8px;
+                font-size: 0.9em;
+            }
+            .theme-button {
+                padding: 8px 12px;
+                font-size: 0.85em; /* Slightly smaller for more buttons */
+                margin: 3px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>BIS Innovation Hub Projects Matrix</h1>
+
+    <div class="theme-buttons-container">
+        <h2>Highlight Projects by Theme:</h2>
+        <button class="theme-button" data-theme="wCBDC">Wholesale CBDC</button>
+        <button class="theme-button" data-theme="rCBDC">Retail CBDC</button>
+        <button class="theme-button" data-theme="TokenizedDeposits">Tokenized Deposits</button>
+        <button class="theme-button" data-theme="DigitalMoney">Digital Money (General)</button>
+        <button class="theme-button" data-theme="Integration">Integration (Legacy Sys)</button>
+        <button class="theme-button" data-theme="DLT">DLT & New Architectures</button>
+        <button class="theme-button" data-theme="CrossBorder">Cross-Border Payments</button>
+        <button class="theme-button" data-theme="DataAI">Data Analytics & AI</button>
+        <button class="theme-button" data-theme="RiskReg">Risk, Regulation & Security</button>
+        <button class="theme-button" data-theme="PaymentsInfra">Payment Systems & Infra</button>
     </div>
 
-    <div class="book-body">
-        
-            <div class="body-inner">
-                
-                    
-
-<div class="book-header" role="navigation">
-    
-
-    <!-- Title -->
-    <h1>
-        <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >BISIH demo</a>
-    </h1>
-</div>
-
-
-
-
-                    <div class="page-wrapper" tabindex="-1" role="main">
-                        <div class="page-inner">
-                            
-<div id="book-search-results">
-    <div class="search-noresults">
-    
-                                <section class="normal markdown-section">
-                                
-                                <p><a href="bis-demo.html">BISIH interactive projects demo</a></p>
-
-                                
-                                </section>
-                            
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
-        </div>
-        <div class="no-results">
-            
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
-            
-        </div>
-    </div>
-</div>
-
-                        </div>
-                    </div>
-                
-            </div>
-
-            
-                
-                <a href="techniques.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Technical Details">
-                    <i class="fa fa-angle-left"></i>
-                </a>
-                
-                
-            
-        
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Provision of Money</th>
+                    <th>Monetary Policy</th>
+                    <th>Payments Infrastructure</th>
+                    <th>Financial Stability</th>
+                    <th>Regulatory/Supervision</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="project-cell" data-project-name="Agorá" data-themes="wCBDC TokenizedDeposits Integration DLT CrossBorder PaymentsInfra"><strong>Agorá</strong> (Unified ledger, wCBDC+tokenized deposits, cross-border payments)</td>
+                    <td class="project-cell" data-project-name="Spectrum" data-themes="DataAI"><strong>Spectrum</strong> (Inflation, advanced data analytics, model)</td>
+                    <td class="project-cell" data-project-name="Nexus" data-themes="Integration CrossBorder PaymentsInfra"><strong>Nexus</strong> (IPS, common gateway/standards, cross-border payments)</td>
+                    <td class="project-cell" data-project-name="Insight" data-themes="DataAI RiskReg"><strong>Insight</strong> (Global value chains)</td>
+                    <td class="project-cell" data-project-name="Hertha" data-themes="DataAI RiskReg"><strong>Hertha</strong> (Financial crime/AML detection)</td>
+                </tr>
+                <tr>
+                    <td class="project-cell" data-project-name="Rialto" data-themes="wCBDC Integration CrossBorder PaymentsInfra"><strong>Rialto</strong> (wCBDC + interlinked IPS, cross-border retail FX)</td>
+                    <td class="project-cell" data-project-name="Neo" data-themes="DataAI"><strong>Neo</strong> (Macro, alternative data)</td>
+                    <td class="project-cell" data-project-name="FuSSE" data-themes="DLT PaymentsInfra"><strong>FuSSE</strong> (Scalable settlement, DLT)</td>
+                    <td class="project-cell" data-project-name="Atlas" data-themes="DigitalMoney DataAI RiskReg"><strong>Atlas</strong> (Crypto-asset data platform, risk monitoring)</td>
+                    <td class="project-cell" data-project-name="Mandala" data-themes="RiskReg CrossBorder PaymentsInfra"><strong>Mandala</strong> (SupTech/RegTech)</td>
+                </tr>
+                <tr>
+                    <td class="project-cell" data-project-name="Jura" data-themes="wCBDC DLT CrossBorder PaymentsInfra"><strong>Jura</strong> (wCBDC + DLT, cross-border settlement, DvP/PvP, FX)</td>
+                    <td></td>
+                    <td class="project-cell" data-project-name="Mariana" data-themes="wCBDC DLT CrossBorder"><strong>Mariana</strong> (AMMs + wCBDC FX, DLT)</td>
+                    <td class="project-cell" data-project-name="Pyxtrial" data-themes="DigitalMoney DataAI RiskReg"><strong>Pyxtrial</strong> (Stablecoin balance sheets)</td>
+                    <td class="project-cell" data-project-name="Ellipse" data-themes="Integration DataAI RiskReg"><strong>Ellipse</strong> (Integrated regulatory data & analytics for supervisory oversight)</td>
+                </tr>
+                <tr>
+                    <td class="project-cell" data-project-name="Helvetia" data-themes="wCBDC Integration DLT PaymentsInfra"><strong>Helvetia</strong> (wCBDC & linking existing system to DLT, settlement of tokenized assets)</td>
+                    <td></td>
+                    <td class="project-cell" data-project-name="Polaris" data-themes="DigitalMoney PaymentsInfra"><strong>Polaris</strong> (Offline CBDC payments)</td>
+                    <td class="project-cell" data-project-name="Rio" data-themes="DataAI RiskReg"><strong>Rio</strong> (Real-time FX anomaly detection)</td>
+                    <td class="project-cell" data-project-name="Aurora" data-themes="DataAI RiskReg CrossBorder"><strong>Aurora</strong> (Cross-border AML/CFT)</td>
+                </tr>
+                <tr>
+                    <td class="project-cell" data-project-name="Aurum" data-themes="rCBDC PaymentsInfra DigitalMoney"><strong>Aurum</strong> (rCBDC)</td>
+                    <td></td>
+                    <td class="project-cell" data-project-name="Leap" data-themes="RiskReg PaymentsInfra"><strong>Leap</strong> (Quantum-proof)</td>
+                    <td class="project-cell" data-project-name="Raven" data-themes="DataAI RiskReg"><strong>Raven</strong> (Cybersecurity)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="project-cell" data-project-name="MeridianFX" data-themes="Integration CrossBorder PaymentsInfra"><strong>MeridianFX</strong> (Interlinker for RTGS, synchronised FX PvP settlement)</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <script>
-        var gitbook = gitbook || [];
-        gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"BISIH demo","level":"1.6","depth":1,"previous":{"title":"Technical Details","level":"1.5","depth":1,"path":"techniques.md","ref":"techniques.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"bis-demo.md","mtime":"2025-05-22T10:38:09.167Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-05-22T10:38:56.626Z"},"basePath":".","book":{"language":"en"}});
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeButtons = document.querySelectorAll('.theme-button');
+            const projectCells = document.querySelectorAll('.project-cell');
+
+            themeButtons.forEach(button => {
+                button.addEventListener('mouseover', () => {
+                    const currentTheme = button.getAttribute('data-theme');
+                    projectCells.forEach(cell => {
+                        // Ensure cell has a project name and themes before trying to highlight
+                        if (cell.getAttribute('data-project-name')) {
+                            const cellThemes = cell.getAttribute('data-themes');
+                            if (cellThemes && cellThemes.includes(currentTheme)) {
+                                cell.classList.add('highlight');
+                            }
+                        }
+                    });
+                });
+
+                button.addEventListener('mouseout', () => {
+                    projectCells.forEach(cell => {
+                        if (cell.getAttribute('data-project-name')) {
+                            cell.classList.remove('highlight');
+                        }
+                    });
+                });
+            });
         });
     </script>
-</div>
 
-        
-    <noscript>
-        <style>
-            .honkit-cloak {
-                display: block !important;
-            }
-        </style>
-    </noscript>
-    <script>
-        // Restore sidebar state as critical path for prevent layout shift
-        function __init__getSidebarState(defaultValue){
-            var baseKey = "";
-            var key = baseKey + ":sidebar";
-            try {
-                var value = localStorage[key];
-                if (value === undefined) {
-                    return defaultValue;
-                }
-                var parsed = JSON.parse(value);
-                return parsed == null ? defaultValue : parsed;
-            } catch (e) {
-                return defaultValue;
-            }
-        }
-        function __init__restoreLastSidebarState() {
-            var isMobile = window.matchMedia("(max-width: 600px)").matches;
-            if (isMobile) {
-                // Init last state if not mobile
-                return;
-            }
-            var sidebarState = __init__getSidebarState(true);
-            var book = document.querySelector(".book");
-            // Show sidebar if it enabled
-            if (sidebarState && book) {
-                book.classList.add("without-animation", "with-summary");
-            }
-        }
-
-        try {
-            __init__restoreLastSidebarState();
-        } finally {
-            var book = document.querySelector(".book");
-            book.classList.remove("honkit-cloak");
-        }
-    </script>
-    <script src="../gitbook/gitbook.js"></script>
-    <script src="../gitbook/theme.js"></script>
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
-        
-    
-        
-        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
-        
-    
-
-    </body>
+</body>
 </html>
-
