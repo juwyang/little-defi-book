@@ -8,4 +8,4 @@
 # Technical Details
 * [Technical Details](techniques.md)
 # BISIH demo
-* [BISIH demo](bis-demo.html)
+* [BISIH demo](bis-demo.md)
