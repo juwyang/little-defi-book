@@ -7,5 +7,3 @@
 * [Tokenization](tokenization.md)
 # Technical Details
 * [Technical Details](techniques.md)
-# BISIH demo
-* [BISIH demo](bis-demo.md)
