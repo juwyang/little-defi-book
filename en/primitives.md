@@ -8,10 +8,13 @@
 
 
 >Summary:
-(Underlying Technology) Blockchain technology is a foundational technology.
-(First Layer: Blockchain Platforms) Bitcoin and Ethereum are specific implementations and platforms based on blockchain technology, each having its own protocol defining its operation.
-(Second Layer: Application Layer) Decentralized Finance (DeFi) is a series of financial applications built on blockchain platforms like Ethereum, and these applications also follow specific protocols.
-Two meanings of decentralization:
+>(Underlying Technology) Blockchain technology is a foundational technology.
+>
+>(First Layer: Blockchain Platforms) Bitcoin and Ethereum are specific implementations and platforms based on blockchain technology, each having its own protocol defining its operation.
+>
+>(Second Layer: Application Layer) Decentralized Finance (DeFi) is a series of financial applications built on blockchain platforms like Ethereum, and these applications also follow specific protocols.
+>
+>Two meanings of decentralization:
 >1. Infrastructure Architecture: The network is decentralized; each node is connected to other nodes, rather than a centralized node.
 >2. Application of Smart Contracts: There is no need for a centralized intermediary to execute contract terms; all transactions are automatically executed on the blockchain.
 
@@ -28,15 +31,23 @@ Protocols are sets of rules; smart contracts are the means of implementing those
 
 ### The Lifecycle of a Transaction
 
-- Accounts are divided into two types: wallets owned by users are called EOA (Externally Owned Account), which include a pair of keys. The public key can be derived from the private key through cryptographic algorithms, and the account's public address (e.g., Ethereum addresses start with `0x`) is derived from the public key. The address is public and used to receive funds and identify the account. There is another type of account called a Contract Account, which are instances of smart contracts, such as Uniswap's trading pair contract or an ERC-20 token contract. These are controlled by smart contract code and also have an address. Only EOAs can initiate transactions; contract accounts cannot actively initiate transactions but can only respond to calls from EOAs. Transactions that EOAs can initiate include: transferring funds (sending a certain amount of native tokens to another EOA address), calling functions of a contract account (e.g., swapping tokens on a DEX, minting NFTs, participating in lending, etc.).
-- Transaction lifecycle: (i) A user signs a transaction using their private key and sends the transaction request to a node on the connected blockchain network via wallet software like MetaMask or their own running node software (e.g., Geth). The node performs initial checks on the transaction format, signature, account balance, etc. (ii) If it passes, the transaction is placed in this node's mempool and propagated to other nodes in the network via the Gossip protocol. (iii) Operators of various nodes (miners or validators) compete for the right to add the next block. They select a batch of transactions (usually those willing to pay higher transaction fees) from the mempool to package into a new block. This node will execute the code required to complete the transaction (such as calling a smart contract) in its local Ethereum Virtual Machine (EVM) or similar environment. During execution, the state of the contract may change (e.g., variable values updated, events emitted, transfers to other addresses). The miner/validator executing the transaction will include the execution results (new state root hash, transaction receipts, etc.) in the proposed block and broadcast this block to other nodes in the network. (iv) Other full nodes, upon receiving the new block, will independently re-execute all transactions in the block (including smart contract calls) to verify their validity and results.
+- There're two types of accounts: 
+  - wallets owned by users are called EOA (Externally Owned Account), which include a pair of keys: secret key - public key - the account's public address (e.g., Ethereum addresses start with `0x`). The address is public and used to receive funds and identify the account. 
+  - There is another type of account called a Contract Account, which are instances of smart contracts, such as Uniswap's trading pair contract or an ERC-20 token contract. These are controlled by smart contract code and also have an address. 
+  - Only EOAs can initiate transactions; contract accounts cannot actively initiate transactions but can only respond to calls from EOAs. Transactions that EOAs can initiate include: transferring funds (sending a certain amount of native tokens to another EOA address), calling functions of a contract account (e.g., swapping tokens on a DEX, minting NFTs, participating in lending, etc.).
+- Transaction lifecycle: 
+  - (i) A user signs a transaction using their private key and sends the transaction request to a node on the connected blockchain network via wallet software like MetaMask or their own running node software (e.g., Geth). The node performs initial checks on the transaction format, signature, account balance, etc. 
+  - (ii) If it passes, the transaction is placed in this node's mempool and propagated to other nodes in the network via the Gossip protocol. 
+  - (iii) Operators of various nodes (miners or validators) compete for the right to add the next block. They select a batch of transactions (usually those willing to pay higher transaction fees) from the mempool to package into a new block. This node will execute the code required to complete the transaction (such as calling a smart contract) in its local Ethereum Virtual Machine (EVM) or similar environment. During execution, the state of the contract may change (e.g., variable values updated, events emitted, transfers to other addresses). The miner/validator executing the transaction will include the execution results (new state root hash, transaction receipts, etc.) in the proposed block and broadcast this block to other nodes in the network. 
+  - (iv) Other full nodes, upon receiving the new block, will independently re-execute all transactions in the block (including smart contract calls) to verify their validity and results.
 - During the execution of a transaction, there are some computations, such as calling a smart contract function or transferring funds. These computations are executed in the Ethereum Virtual Machine (EVM). Each underlying opcode in the EVM, such as addition (ADD), storing data to the blockchain (SSTORE), reading data from storage (SLOAD), etc., has a predefined Gas cost. These costs are paid by the transaction initiator to the miners/validators.
 - If a transaction fails (state reverts, as if it never happened), the Gas already consumed (up to the point where the limit was exceeded) will still be paid to the miners/validators.
 
 
 >Summary:
-Wallet initiates transaction request -> Node receives request and broadcasts -> Miner/Validator selects and packages -> Other nodes verify the block, transaction is added to the chain.
-The cost is paid by the transaction initiator (sender) to the miner/validator.
+>Wallet initiates transaction request -> Node receives request and broadcasts -> Miner/Validator selects and packages -> Other nodes verify the block, transaction is added to the chain.
+>
+>The cost is paid by the transaction initiator (sender) to the miner/validator.
 
 
 ### Nodes and Network, Miners and Validators
